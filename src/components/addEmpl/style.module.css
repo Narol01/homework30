@@ -1,0 +1,25 @@
+.form{
+    margin:40px ;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    border:2px solid black; 
+    padding: 15px;
+    padding-bottom: 40px;
+}
+
+.form .inp{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.form .but button{
+    width: 200px;
+    height: 25px;
+}
+
+.form .but{
+    display: flex;
+    justify-content: center;
+}

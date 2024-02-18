@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import EmployeeList from "./components/listEmpl/EmployeeList";
+import { Employee } from "./type/employee";
+import AddEmployee from "./components/addEmpl/AddEmployee";
+import "./style.css"
+
 
 function App() {
+  
+  const employees:Employee[] = [
+  { id: 1, name: "John", age: 30, salary: 50000 },
+  { id: 2, name: "Alice", age: 35, salary: 60000 },
+  { id: 3, name: "Bob", age: 25, salary: 45000 }
+  ];
+
+const [employee , setEmployee ] = useState<Employee[]>(employees);
+
+const removeEmpl =(value:number):void => setEmployee(employee.filter(({id})=>id!==value));
+const handlers={removeEmpl};
+const addEmployee=(employees:Employee):void => {
+  employee.push(employees);
+  setEmployee([...employee]);
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+    <AddEmployee addEmployee={addEmployee}/>
+     <EmployeeList employee={employee} {...handlers}/>
     </div>
   );
 }
